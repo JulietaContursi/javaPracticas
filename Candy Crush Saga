@@ -1,0 +1,85 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class javaPractica {
+    public static void main(String[] args) {
+
+        Scanner entrada = new Scanner(System.in);
+        Random random = new Random();
+
+        System.out.print("Cantidad de filas (mayor a 2): ");
+        int M = entrada.nextInt();
+        System.out.print("Cantidad de columnas (mayor a 2): ");
+        int N = entrada.nextInt();
+
+        //Declaracion de matriz
+        int[][] matriz = new int[M][N];
+        porcentajeNaranja(matriz, M, N);
+
+
+        //recorrido que llena la matriz
+        for (int i = 1; i < matriz.length; i++) {
+            for (int j = 1; j < matriz.length; j++) {
+                //asignacion de numero aleatorio a la matriz entre 1 y 4
+                matriz[i][j] = (int) (Math.random() * 4 + 1);
+            }
+        }
+        //imprimir respuesta
+        String respuesta = "";
+        for (int i = 1; i < matriz.length; i++) {
+            for (int j = 1; j < matriz.length; j++) {
+                respuesta = respuesta + " " + matriz[i][j];
+            }
+            respuesta = respuesta + "\n";
+        }
+        System.out.println(respuesta);
+
+        //cantidad de fuxias en una fila
+        int i = 1;
+
+        boolean tresFuxias = false; //declaro variable 3 fuxias
+        while (i < M && !tresFuxias) { //comparo el recorrido de las filas si es diferente a la variable 3 fuxias
+            int contadorFuxsias = 0; //cuento la cantidad de fuxias
+
+            for (int j = 1; j < N; j++) { //recorre columnas
+
+                if (matriz[i][j] == 3) {
+                    contadorFuxsias++;
+                }
+
+            }
+
+            if (contadorFuxsias >= 3) { //si contador fuxia es mayor o igual a 3
+                tresFuxias = true;  // es verdadera la variable
+            }
+
+            i++; // incremento i hasta que no se encuentren mas de 3 fuxias
+        }
+
+        if (tresFuxias) {
+            System.out.println("Hay 3 fuxias en una fila ");
+        } else {
+            System.out.println("No hay mas de 3 fuxias en una fila");
+        }
+        //porcentaje de numero 2 en la columna 2
+        i = 0;
+        int naranja = 0;
+        for (i = 0; i < M; i++) {
+            if (matriz[i][2] == 2) {
+                naranja += 1;
+            }
+
+
+        }
+        System.out.println("el porcentaje de caramelos naranjas en la columna 2 es: ");
+        String format = String.format("%.2f", (double) (naranja * 100 / N));
+        System.out.println(format);
+    }
+
+    private static void porcentajeNaranja(int[][] matriz, int m, int n) {
+
+    }
+
+}
+
+
