@@ -14,7 +14,7 @@ public class javaPractica {
 
         //Declaracion de matriz
         int[][] matriz = new int[M][N];
-        porcentajeNaranja(matriz, M, N);
+
 
 
         //recorrido que llena la matriz
@@ -74,10 +74,6 @@ public class javaPractica {
         System.out.println("el porcentaje de caramelos naranjas en la columna 2 es: ");
         String format = String.format("%.2f", (double) (naranja * 100 / N));
         System.out.println(format);
-    }
-
-    private static void porcentajeNaranja(int[][] matriz, int m, int n) {
-
     }
 
 }
